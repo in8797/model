@@ -22,12 +22,12 @@
 			divresult.innerHTML += "<br> 마지막경로명"
 					+ txtbigo.value.substr(txtbigo.value.lastIndexOf("/") + 1);
 			//split 키워드 : 모델,객체,스트링
-			var arr = txtbigo.value.split(",");
+			var arr = txtbigo.value.split("-");
 			divresult.innerHTML += "<br> 키워드 개수 " + arr.length;
 			//search, pattern - 정규표현식
 			divresult.innerHTML += "<br> 이메일 체크 " + isEmail(txtbigo.value);
 			//replace : 공백제거
-			txtbigo.value = txtbigo.value.replace(\/s\g,"");
+			//txtbigo.value = txtbigo.value.replace(\/sg,"");
 			//(old값,new값)
 		});
 	}
