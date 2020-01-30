@@ -23,6 +23,9 @@
 		//이름은 최소 길이가 5글자 이상인지 체크하고 모두 대문자로 변경하여 출력
 		if (mbName.value.length >= 5) {
 			result.innerHTML += mbName.value.toUpperCase() + "<br>";
+		} else {
+			alert("이름은 취소 5글자 이상이여야 합니다");
+			return;
 		}
 		//이메일은 "@"와 "."을 포함하는지 체크하여 true/false 결과 출력
 		function isEmail(asValue) {
@@ -40,9 +43,11 @@
 		//성적은 소수점 2자리까지만 입력하였는지 체크(regexp)하고 아니라면 둘째자리까지만 변경하여 div에 출력
 
 		//비고란의  \n(엔터키) 를 <br>태그로 변환(replace)하여 출력
-		result.innerHTML += result.replace("\\n", mbBigo.innerHTML = "<br>");
-
-	}
+		var txt = document.getElementById("mbBigo").value;
+		result += "<br/>" + txt.replace(/(\n|\r\n)/g, '<br>');
+		//출력
+		document.getElementById("result").innerHTML = result;
+	}}
 </script>
 </head>
 <body>
