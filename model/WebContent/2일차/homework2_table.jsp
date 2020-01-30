@@ -18,17 +18,37 @@ td {
 <script>
 	window.addEventListener("load", function() {
 		//tr 태그에 더블클릭 이벤트 지정 . 선택한 행을 오른쪽으로 이동
-		var trs = document.querySelectorAll("#tbl1 tr");
-		var tblBody = document.querySelectorAll("#tbl2 tbody");
-		for (i = 0; i < trs.length; i++) {
-			trs[i].addEventListener("dblclick", function() {
-				tblBody[0].appendChild(this);
-				//이벤트 다시 지정(두번째 테이블에서 이동 이벤트 핸들러 수정)
-				tblBody[0].removeEventListener("dblclick", function() {
-					tblBody[0].appendChild(this);
-				})
-			})
-		}
+		/* 		var trs = document.querySelectorAll("#tbl1 tr");
+		 var tblBody = document.querySelectorAll("#tbl2 tbody");
+		 for (i = 0; i < trs.length; i++) {
+		 trs[i].addEventListener("dblclick", function() {
+		 tblBody[0].appendChild(this);
+		 //이벤트 다시 지정(두번째 테이블에서 이동 이벤트 핸들러 수정)
+		 tblBody[0].removeEventListener("dblclick", function() {
+		 tblBody[0].appendChild(this);
+		 }) 
+		 })
+		 } */
+		//왼쪽 테이블 클릭 이벤트
+		tbl1.addEventListener("dblclick", function(e) {
+			var src = e.target.parentNode;
+			console.log(e.target.parentNode);
+			if (src.tagName == "TR") {
+				console.log(src);
+				console.log(this);
+				tbl2.appendChild(src);
+			}
+		})
+		//오른쪽 테이블 클릭 이벤트
+		tbl2.addEventListener("dblclick", function(e) {
+			var src = e.target.parentNode;
+			console.log(e.target.parentNode);
+			if (src.tagName == "TR") {
+				console.log(src);
+				console.log(this);
+				tbl1.appendChild(src);
+			}
+		})
 	})
 </script>
 </head>

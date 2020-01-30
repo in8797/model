@@ -33,9 +33,8 @@
 		//등록일자는 날짜 형식이 맞는지 체크하고 년도는 2015~2019년도 사이인지 체크하여 결과 출력
 
 		//홈페이지는 http로 시작하는지 체크하여 결과 출력
-
 		if (mbHomepage.value.match(/[http]/g)) {
-			result.innerHTML += "<br> ??뭘출력하는지 잘모르겠"
+			result.innerHTML += "<br> 홈페이지 체크 후 출력 : "
 					+ mbHomepage.value.substr(mbHomepage.value);
 		}
 		//성적은 소수점 2자리까지만 입력하였는지 체크(regexp)하고 아니라면 둘째자리까지만 변경하여 div에 출력

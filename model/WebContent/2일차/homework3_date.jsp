@@ -10,12 +10,14 @@
 		btnCalc.addEventListener("click", function() {
 
 			var str = Date.parse(inDate.value);
+			var a1 = new Date() - new Date(inDate.value);
+			var a2 = Math.round(a1);
 			//var dArr = str.split(",");
 			//var today = new Date(dArr[0], dArr[1]-1, dArr[2]);
 			//console.log(today);
 			//입력날짜와 오늘 날짜까지의 일수 계산하여 div에 출력 "남은 일수는 00일입니다."
 			//반올림해서 출력 할 것
-			result.innerHTML = new Date() - new Date(inDate.value); 
+			result.innerHTML = a2; 
 			/* console.log(today.getFullYear());
 			console.log(today.getMonth()+1);
 			console.log(today.getDate());
