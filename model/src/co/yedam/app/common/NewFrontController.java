@@ -11,6 +11,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import co.yedam.app.board.Ajax.AjaxBoardList;
+import co.yedam.app.board.Ajax.AjaxBoardOne;
+
 /**
  * Servlet implementation class NewController
  */
@@ -29,15 +32,19 @@ public class NewFrontController extends HttpServlet {
 //		cont.put("/index.do", new IndexCommand()); // 홈페이지 호출
 //		board
 //		등록
-		cont.put("/boardCreate", new BoardCommandCreate());
+		cont.put("/boardCreate.do", new BoardCommandCreate());
 //		수정
 //		삭제
 //		상세조회
 //		목록
-		cont.put("/boardlist", new BoardCommandList()); // "url"
+		cont.put("/boardlist.do", new BoardCommandList()); // "url"
 //		수정폼
-		cont.put("/boardCreateForm", new BoardCommandCreateFrom());
+		cont.put("/boardCreateForm.do", new BoardCommandCreateFrom());
 //		등록폼
+
+		// ajax
+		cont.put("/ajaxBoardList.do", new AjaxBoardList());
+		cont.put("/ajaxBoardOne.do", new AjaxBoardOne());
 	}
 
 	protected void service(HttpServletRequest request, HttpServletResponse response)
@@ -52,18 +59,30 @@ public class NewFrontController extends HttpServlet {
 		// 로그 처리
 		System.out.println("path=" + path);
 		// 권한 체그
-		
+
 		Command commandImpl = cont.get(path); // 실행 클래스를 선택한다.
 		String page = null;
-		if(commandImpl != null) {
+		if (commandImpl != null) {
 			page = commandImpl.excute(request, response);
-			RequestDispatcher dispatcher = request.getRequestDispatcher(page);
-			dispatcher.forward(request, response);
-		} else {
-			response.getWriter().append("잘못된 요청");
+			if (page != null && !page.isEmpty()) {
+				if (page.startsWith("redirect:")) {
+					String view = page.substring(9);
+					response.sendRedirect(view);
+				} else if (page.startsWith("ajax:")) {
+					response.getWriter().append(page.substring(5));
+				} else if (page.startsWith("script:")) {
+					response.getWriter().append("<script>").append(page.substring(7)).append("</script>");
+
+				} else {
+					request.getRequestDispatcher(page).forward(request, response);
+				}
+//			request.getRequestDispatcher(page).forward(request, response);
+//			RequestDispatcher dispatcher = request.getRequestDispatcher(page);
+//			dispatcher.forward(request, response);
+			} else {
+				response.getWriter().append("잘못된 요청");
+			}
+
 		}
-
-
 	}
-
 }

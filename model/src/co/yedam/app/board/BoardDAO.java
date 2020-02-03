@@ -66,13 +66,13 @@ public class BoardDAO extends DAO { // 상속받음
 			String sql = "select * from board where no=?";
 			psmt = conn.prepareStatement(sql);
 			psmt.setInt(1, no);
-			rs = psmt.executeQuery(sql);
+			rs = psmt.executeQuery();
 			if (rs.next()) {
 				dto.setNo(rs.getInt("no"));
 				dto.setPoster(rs.getString("poster"));
 				dto.setSubject(rs.getString("subject"));
 				dto.setSubject(rs.getString("contents"));
-				dto.setLastpost(rs.getDate("lastpost"));
+//				dto.setLastpost(rs.getDate("lastpost"));
 				dto.setViews(rs.getInt("views"));
 			}
 		} catch (SQLException e) {
@@ -100,7 +100,7 @@ public class BoardDAO extends DAO { // 상속받음
 				dto.setPoster(rs.getString("poster"));
 				dto.setSubject(rs.getString("subject"));
 				dto.setSubject(rs.getString("contents"));
-				dto.setLastpost(rs.getDate("lastpost"));
+//				dto.setLastpost(rs.getDate("lastpost"));
 				dto.setViews(rs.getInt("views"));
 				list.add(dto);
 			}
