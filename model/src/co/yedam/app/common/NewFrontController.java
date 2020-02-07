@@ -11,8 +11,15 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import co.yedam.app.ajax.GetDeptCnt;
 import co.yedam.app.board.Ajax.AjaxBoardList;
 import co.yedam.app.board.Ajax.AjaxBoardOne;
+import co.yedam.app.users.command.DeleteUsers;
+import co.yedam.app.users.command.GetUsers;
+import co.yedam.app.users.command.GetUsersList;
+import co.yedam.app.users.command.InsertUsers;
+import co.yedam.app.users.command.ManageUsers;
+import co.yedam.app.users.command.UpdateUsers;
 
 /**
  * Servlet implementation class NewController
@@ -45,6 +52,19 @@ public class NewFrontController extends HttpServlet {
 		// ajax
 		cont.put("/ajaxBoardList.do", new AjaxBoardList());
 		cont.put("/ajaxBoardOne.do", new AjaxBoardOne());
+
+		// 댓글 관리
+
+		// 사용자 관리
+		cont.put("/ManageUsers.do", new ManageUsers());
+		cont.put("/ajax/InsertUsers.do", new InsertUsers());
+		cont.put("/ajax/UpdateUsers.do", new UpdateUsers());
+		cont.put("/ajax/DeleteUsers.do", new DeleteUsers());
+		cont.put("/ajax/GetUsers.do", new GetUsers());
+		cont.put("/ajax/GetUsersList.do", new GetUsersList());
+
+		
+		cont.put("/ajax/GetDeptCnt.do", new GetDeptCnt());
 	}
 
 	protected void service(HttpServletRequest request, HttpServletResponse response)

@@ -29,7 +29,7 @@ div {
 <body>
 	<div class="container">
 		<div class="row">
-			<div class="col-lg-6 col-md-12">
+			<div class="col-lg-3 col-md-12">
 				목록<br>
 				<table class="table-hover">
 					<thead>
@@ -56,7 +56,7 @@ div {
 				</table>
 
 			</div>
-			<div class="col-lg-3 col-md-12">
+			<div class="col-lg-6 col-md-12">
 				등록폼<br>
 				<form>
 					<div class="form-group row">

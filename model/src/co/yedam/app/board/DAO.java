@@ -9,10 +9,10 @@ import java.sql.SQLException;
 import javax.sql.DataSource;
 
 public class DAO {
-	Connection conn;
-	PreparedStatement psmt;
-	ResultSet rs;
-	DataSource ds; // 커넥션 POOL사용을 위한 데이터 연결 생성 객체
+	protected Connection conn;
+	protected PreparedStatement psmt;
+	protected ResultSet rs;
+	protected DataSource ds; // 커넥션 POOL사용을 위한 데이터 연결 생성 객체
 	private String driver = "oracle.jdbc.driver.OracleDriver";
 	private String url = "jdbc:oracle:thin:@192.168.111.131:1521:orcl";
 	private String user = "hr";
